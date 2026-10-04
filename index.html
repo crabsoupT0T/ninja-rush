@@ -20,19 +20,19 @@ a { color: inherit; text-decoration: none; }
 .hero { display: block; width: min(100%, 28rem); height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
 .sheet h2 { margin: 1.4rem 0 .4rem; font-size: 1.35rem; }
 .sheet p { line-height: 1.55; }
-#aln-overlay { position: fixed; inset: 0; z-index: 20; pointer-events: none; overflow: hidden; background: radial-gradient(ellipse at 50% 62%, rgba(255,255,255,.05) 0%, rgba(90,90,96,.18) 42%, rgba(28,28,32,.38) 100%); }
-.streak { position: absolute; left: 54%; top: 42%; width: 84vmax; height: 4px; transform-origin: 0 50%; background: linear-gradient(90deg, transparent 0%, transparent 8%, rgba(255,255,255,.15) 18%, #fff 42%, #fff 100%); filter: drop-shadow(0 0 1px rgba(0,0,0,.35)); animation: aln-streak .55s linear infinite; }
-.streak-thick { height: 7px; }
-.aln-runner { position: absolute; left: 50%; bottom: 6vh; width: min(52vw, 520px); transform: translateX(-46%); }
+#aln-overlay { position: fixed; inset: 0; z-index: 20; pointer-events: none; overflow: hidden; background: radial-gradient(circle at 50% 54%, rgba(255,255,255,.08) 0%, rgba(150,150,154,.16) 34%, rgba(40,40,44,.42) 100%); }
+.burst { position: absolute; left: 50%; top: 54%; width: 240vmax; height: 240vmax; transform: translate(-50%, -50%); background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg 2.1deg, rgba(255,255,255,.95) 2.25deg 3.15deg, transparent 3.3deg 5.4deg); filter: drop-shadow(0 0 1px rgba(0,0,0,.65)); -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 0 16%, #000 34%, #000 86%, transparent 100%); mask-image: radial-gradient(circle at 50% 50%, transparent 0 16%, #000 34%, #000 86%, transparent 100%); animation: aln-burst .65s linear infinite; }
+.burst-fine { background: repeating-conic-gradient(from 1.5deg at 50% 50%, transparent 0deg 3.6deg, rgba(255,255,255,.8) 3.6deg 3.9deg, transparent 4deg 7.2deg); animation-duration: .85s; animation-direction: reverse; }
+.aln-runner { position: absolute; left: 50%; bottom: 0; width: min(58vw, 640px); transform: translateX(-46%); }
 .aln-shadow { position: absolute; left: 28%; bottom: 2%; width: 62%; height: 8%; border-radius: 50%; background: rgba(0,0,0,.35); filter: blur(6px); }
 .aln-ninja { display: block; width: 100%; height: auto; }
 .aln-puff { position: absolute; border-radius: 999px; background: #efe6d4; box-shadow: 0 0 8px rgba(239,230,212,.7); opacity: 0; pointer-events: none; }
 .puff-a { width: 22px; height: 9px; left: 38%; bottom: 4%; animation: aln-puff .55s ease-out infinite; }
 .puff-b { width: 14px; height: 7px; left: 48%; bottom: 2%; animation: aln-puff .55s ease-out .24s infinite; }
-@keyframes aln-streak { from { transform: rotate(var(--a)) translateX(4vmax) scaleX(.25); opacity: 0; } 25% { opacity: 1; } to { transform: rotate(var(--a)) translateX(16vmax) scaleX(1); opacity: .15; } }
+@keyframes aln-burst { from { transform: translate(-50%, -50%) scale(.9); } to { transform: translate(-50%, -50%) scale(1.12); } }
 @keyframes aln-puff { 0% { opacity: .75; transform: translate(0, 4px) scale(.45); } 100% { opacity: 0; transform: translate(-46px, -18px) scale(1.4); } }
-@media (max-width: 640px) { .nav { display: none; } .aln-runner { width: 108vw; left: 58%; bottom: 2vh; } }
-@media (prefers-reduced-motion: reduce) { .streak, .aln-puff { animation: none; } .streak { opacity: .7; transform: rotate(var(--a)) translateX(10vmax); } .aln-puff { opacity: .4; } }
+@media (max-width: 640px) { .nav { display: none; } .aln-runner { width: 118vw; left: 62%; bottom: 0; } }
+@media (prefers-reduced-motion: reduce) { .burst, .aln-puff { animation: none; } .aln-puff { opacity: .4; } }
 </style>
 </head>
 <body>
@@ -51,6 +51,8 @@ a { color: inherit; text-decoration: none; }
     <p>Rooftops stack into a dark comb. The only proof he passed is a thin ribbon of dust lifting off the stones, then settling before anyone looks down.</p>
   </article>
   <div id="aln-overlay" aria-hidden="true">
+    <div class="burst"></div>
+    <div class="burst burst-fine"></div>
     <div class="aln-runner">
       <img class="aln-ninja" src="https://raw.githubusercontent.com/crabsoupT0T/ninja-rush/main/ninja.png" alt="" />
       <span class="aln-shadow"></span>
@@ -59,15 +61,5 @@ a { color: inherit; text-decoration: none; }
     </div>
   </div>
 </main>
-<script>
-const box = document.getElementById("aln-overlay");
-for (let i = 0; i < 42; i++) {
-  const s = document.createElement("span");
-  s.className = i % 4 === 0 ? "streak streak-thick" : "streak";
-  s.style.setProperty("--a", Math.round((i * 360) / 42) + "deg");
-  s.style.animationDelay = ((i % 7) * 0.06) + "s";
-  box.insertBefore(s, box.firstChild);
-}
-</script>
 </body>
 </html>
