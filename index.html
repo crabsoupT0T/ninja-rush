@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ninja Rush</title>
+<style>
+html,body{margin:0;min-height:100%;background:#f7f5f1;color:#16161a;font-family:Palatino,Georgia,serif}
+a{color:inherit;text-decoration:none}
+.page{min-height:100vh}
+.mast{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid rgba(22,22,26,.08);font-family:"Segoe UI",sans-serif}
+.brand{display:flex;align-items:center;gap:.6rem;font-size:.82rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.mark{width:.85rem;height:.85rem;background:#16161a;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.nav{display:flex;gap:1.1rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+.sheet{max-width:46rem;margin:0 auto;padding:2.2rem 1.5rem 42vh}
+.kicker{margin:0 0 .6rem;font-family:"Segoe UI",sans-serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#e10600}
+h1{margin:0 0 .8rem;max-width:12ch;font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;letter-spacing:-.03em}
+.lede{margin:0 0 .7rem;max-width:36rem;font-size:1.05rem;line-height:1.5}
+.meta{margin:0 0 1.2rem;font-family:"Segoe UI",sans-serif;font-size:.78rem;color:#5e5a54}
+.hero{display:block;width:min(100%,28rem);height:auto;aspect-ratio:16/10}
+h2{margin:1.4rem 0 .4rem;font-size:1.35rem}
+p{line-height:1.55}
+#aln-overlay{position:fixed;inset:0;z-index:20;pointer-events:none;overflow:hidden;background:radial-gradient(ellipse at 50% 62%,rgba(255,255,255,.05) 0%,rgba(90,90,96,.18) 42%,rgba(28,28,32,.38) 100%)}
+.streak{position:absolute;left:54%;top:42%;width:84vmax;height:4px;transform-origin:0 50%;background:linear-gradient(90deg,transparent 0%,transparent 8%,rgba(255,255,255,.15) 18%,#fff 42%,#fff 100%);filter:drop-shadow(0 0 1px rgba(0,0,0,.35));animation:aln-streak .55s linear infinite}
+.streak-thick{height:7px}
+.aln-runner{position:absolute;left:50%;bottom:6vh;width:min(52vw,520px);transform:translateX(-46%)}
+.aln-shadow{position:absolute;left:28%;bottom:2%;width:62%;height:8%;border-radius:50%;background:rgba(0,0,0,.35);filter:blur(6px)}
+.aln-ninja{display:block;width:100%;height:auto}
+.aln-puff{position:absolute;border-radius:999px;background:#efe6d4;opacity:0}
+.puff-a{width:22px;height:9px;left:38%;bottom:4%;animation:aln-puff .55s ease-out infinite}
+.puff-b{width:14px;height:7px;left:48%;bottom:2%;animation:aln-puff .55s ease-out .24s infinite}
+@keyframes aln-streak{from{transform:rotate(var(--a)) translateX(4vmax) scaleX(.25);opacity:0}25%{opacity:1}to{transform:rotate(var(--a)) translateX(16vmax) scaleX(1);opacity:.15}}
+@keyframes aln-puff{0%{opacity:.75;transform:translate(0,4px) scale(.45)}100%{opacity:0;transform:translate(-46px,-18px) scale(1.4)}}
+@media(max-width:640px){.nav{display:none}.aln-runner{width:108vw;left:58%;bottom:2vh}}
+@media(prefers-reduced-motion:reduce){.streak,.aln-puff{animation:none}.streak{opacity:.7;transform:rotate(var(--a)) translateX(10vmax)}.aln-puff{opacity:.4}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="mast">
+    <div class="brand"><span class="mark"></span>Shinobi Strategy</div>
+    <nav class="nav"><a href="#read">Home</a><a href="#read">Articles</a><a href="#read">Techniques</a><a href="#read">About</a></nav>
+  </header>
+  <article class="sheet" id="read">
+    <p class="kicker">Tactics &amp; strategy</p>
+    <h1>The Art of Invisibility</h1>
+    <p class="lede">Exploring the mindset, tools, and techniques of history's shadow warriors.</p>
+    <p class="meta">May 12, 2024 · 8 min read · By Hattori Research</p>
+    <svg class="hero" viewBox="0 0 320 200" aria-label="A castle on a forested hill in mist">
+      <rect width="320" height="200" fill="#c9d2cf"/>
+      <path d="M0 150 C40 120 70 140 110 118 C150 96 180 130 230 108 C270 92 300 120 320 100 V200 H0Z" fill="#3d6b45"/>
+      <path d="M0 168 C50 150 90 170 140 148 C190 128 240 160 320 140 V200 H0Z" fill="#2a5236"/>
+      <g fill="#d8dde0" stroke="#8d979c" stroke-width="1">
+        <path d="M138 92 h44 v58 h-44z"/>
+        <path d="M150 70 h20 v22 h-20z"/>
+        <path d="M154 52 h12 v18 h-12z"/>
+        <path d="M126 108 h16 v42 h-16z"/>
+        <path d="M178 108 h16 v42 h-16z"/>
+      </g>
+      <path d="M146 48 h28 l-14-16z" fill="#6d767b"/>
+    </svg>
+    <h2>Introduction</h2>
+    <p>Rooftops stack into a dark comb. The only proof he passed is a thin ribbon of dust lifting off the stones, then settling before anyone looks down.</p>
+  </article>
+  <div id="aln-overlay" aria-hidden="true">
+    <div class="aln-runner">
+      <svg class="aln-ninja" viewBox="0 0 640 280" aria-hidden="true">
+        <path fill="#e10600" d="M20 78 L250 118 L210 150 L250 168 L40 210 L90 150 Z"/>
+        <path fill="#9d0400" d="M70 150 L230 168 L40 210 Z"/>
+        <path fill="#111" d="M250 96c40-28 92-22 118 8 10-18 36-22 52-8 18 16 14 40-2 52l28 18c22 16 18 42-8 50l-36 10 22 36c8 14-2 30-18 28l-40-8-8 34c-2 16-22 22-32 8l-22-30-30 22c-12 10-30 0-30-14l2-36-28-8c-18-6-24-28-12-42l28-22-6-20c-8-18 2-40 22-46 8-18 28-30 50-22z"/>
+        <circle cx="392" cy="108" r="4" fill="#ff2a2a"/>
+      </svg>
+      <span class="aln-shadow"></span>
+      <span class="aln-puff puff-a"></span>
+      <span class="aln-puff puff-b"></span>
+    </div>
+  </div>
+</main>
+<script>
+const box = document.getElementById("aln-overlay");
+for (let i = 0; i < 42; i++) {
+  const s = document.createElement("span");
+  s.className = i % 4 === 0 ? "streak streak-thick" : "streak";
+  s.style.setProperty("--a", Math.round((i * 360) / 42) + "deg");
+  s.style.animationDelay = ((i % 7) * 0.06) + "s";
+  box.insertBefore(s, box.firstChild);
+}
+</script>
+</body>
+</html>
